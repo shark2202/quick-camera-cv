@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>qtquickcontrols2.conf</file>
+        <file>images/png/camera.png</file>
+        <file>images/png/cogwheel.png</file>
+        <file>images/png/help.png</file>
+        <file>images/png/landscape.png</file>
+        <file>images/png/like.png</file>
+    </qresource>
+</RCC>
