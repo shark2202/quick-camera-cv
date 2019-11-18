@@ -4,6 +4,7 @@ QT += multimedia
 
 android:{
     QT += androidextras
+    QMAKE_LINK += -nostdlib++
 }
 
 CONFIG += c++11
@@ -101,6 +102,21 @@ unix: macx: {
     #INCLUDEPATH += /usr/local/include
     #LIBS += -L/usr/local/lib \
     #    -lopencv_world
+}
+
+win32:{
+    OPENCV_HEADER_SRC=C:/opencv/build/install
+    OPENCV_LIB_SRC=C:/opencv/build/install/x64/mingw/lib
+
+##
+INCLUDEPATH += $$OPENCV_HEADER_SRC/include \
+               $$OPENCV_HEADER_SRC/include/opencv2
+
+##
+LIBS += $$OPENCV_LIB_SRC/libopencv_highgui410.dll.a \
+        $$OPENCV_LIB_SRC/libopencv_core410.dll.a    \
+        $$OPENCV_LIB_SRC/libopencv_imgproc410.dll.a \
+        $$OPENCV_LIB_SRC/libopencv_imgcodecs410.dll.a
 }
 
 unix: !android : !macx:{
