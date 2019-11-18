@@ -48,12 +48,23 @@ linux: android: {
 }
 
 android {
-ANDROID_OPENCV = /home/z/cpp/opencv4/OpenCV-android-sdk/sdk/native
 
+ANDROID_OPENCV_LINUX = /home/z/cpp/opencv4/OpenCV-android-sdk/sdk/native
+ANDROID_OPENCV_WINDOWS = F:/opencv4/OpenCV-android-sdk/sdk/native
+
+exists($$ANDROID_OPENCV_LINUX){
+    ANDROID_OPENCV = $$ANDROID_OPENCV_LINUX
+    message( "Configuring for ANDROID_OPENCV_LINUX" )
+}
+
+exists($$ANDROID_OPENCV_WINDOWS){
+    ANDROID_OPENCV = $$ANDROID_OPENCV_WINDOWS
+    message( "Configuring for ANDROID_OPENCV_WINDOWS" )
+}
 
 
 INCLUDEPATH += \
-#$$ANDROID_OPENCV/jni/include/opencv2 \
+$$ANDROID_OPENCV/jni/include/opencv2 \
 $$ANDROID_OPENCV/jni/include \
 
 
