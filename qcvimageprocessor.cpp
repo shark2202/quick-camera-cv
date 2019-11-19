@@ -1,5 +1,9 @@
 #include "qcvimageprocessor.h"
 
+#ifdef Q_OS_IOS
+        #include "ios/ocview.h"
+#endif
+
 QCvImageProcessor::QCvImageProcessor(QObject *parent) : QObject(parent)
 {
     camera = Q_NULLPTR;
@@ -92,7 +96,18 @@ void QCvAlgorithm::doNone()
     }
     else
     {
+
+#if defined(Q_OS_IOS)
+        ios_imwrite(inputFileName.toStdString(), image);
+
+#else
         imwrite(inputFileName.toStdString(), image);
+#endif
+
+
+
+
+
         emit imageProcessed(inputFileName);
     }
 }

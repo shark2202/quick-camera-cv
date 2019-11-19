@@ -10,6 +10,7 @@ android:{
 CONFIG += c++11
 
 SOURCES += main.cpp \
+    ios/ocview.mm \
     qcvimageprocessor.cpp
 
 RESOURCES += qml.qrc
@@ -44,6 +45,23 @@ win32: {
 
 
 ios: {
+    OBJECTIVE_SOURCES += ios/ocview.mm
+
+
+    QMAKE_LFLAGS    += -framework OpenGLES
+    QMAKE_LFLAGS    += -framework GLKit
+    QMAKE_LFLAGS    += -framework QuartzCore
+    QMAKE_LFLAGS    += -framework CoreVideo
+    QMAKE_LFLAGS    += -framework CoreAudio
+    QMAKE_LFLAGS    += -framework CoreImage
+    QMAKE_LFLAGS    += -framework CoreMedia
+    QMAKE_LFLAGS    += -framework AVFoundation
+    QMAKE_LFLAGS    += -framework AudioToolbox
+    QMAKE_LFLAGS    += -framework CoreGraphics
+    QMAKE_LFLAGS    += -framework UIKit
+
+
+
     IOS_OPENCV = "/Users/will/qt_codes"
 
 #INCLUDEPATH += \
@@ -160,6 +178,7 @@ unix: !android : !macx:{
 
 
 HEADERS += \
+    ios/ocview.h \
     qcvimageprocessor.h
 
 
