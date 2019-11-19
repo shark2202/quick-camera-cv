@@ -1,6 +1,12 @@
 #ifndef QCVIMAGEPROCESSOR_H
 #define QCVIMAGEPROCESSOR_H
 
+//#if defined(Q_OS_IOS)
+#include "opencv2/opencv.hpp"
+//#else
+//#include "opencv2/opencv.hpp"
+//#endif
+
 #include <QObject>
 #include <QCamera>
 #include <QCameraImageCapture>
@@ -9,7 +15,7 @@
 #include <QThread>
 #include <QThreadPool>
 
-#include "opencv2/opencv.hpp"
+
 
 class QCvAlgorithm: public QObject
 {

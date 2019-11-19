@@ -42,13 +42,40 @@ win32: {
     RC_ICONS = icon.ico
 }
 
+
+ios: {
+    IOS_OPENCV = "/Users/will/qt_codes"
+
+#INCLUDEPATH += \
+#$$IOS_OPENCV/Headers/opencv2 \
+#$$IOS_OPENCV/Headers
+
+
+    iphonesimulator {
+
+      #message("iphonesimulator")
+
+      #LIBS += -F $$IOS_OPENCV -framework opencv2
+
+    }
+
+    iphoneos{
+
+      message("iphoneos")
+
+      LIBS += -F  $$IOS_OPENCV -framework opencv2
+
+    }
+
+}
+
 #ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android-sources
 linux: android: {
     #include(d:/opencv/opencv.3.2.0.android.armeabi-v7a.pri)
     ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 }
 
-android {
+android: {
 
 ANDROID_OPENCV_LINUX = /home/z/cpp/opencv4/OpenCV-android-sdk/sdk/native
 ANDROID_OPENCV_WINDOWS = F:/opencv4/OpenCV-android-sdk/sdk/native
@@ -121,23 +148,26 @@ LIBS += $$OPENCV_LIB_SRC/libopencv_highgui410.dll.a \
 
 unix: !android : !macx:{
 ##
-INCLUDEPATH += /usr/local/include \
-               /usr/local/include/opencv4
+#INCLUDEPATH += /usr/local/include \
+#               /usr/local/include/opencv4
 
 ##
-LIBS += /usr/local/lib/libopencv_highgui.so \
-        /usr/local/lib/libopencv_core.so    \
-        /usr/local/lib/libopencv_imgproc.so \
-        /usr/local/lib/libopencv_imgcodecs.so
+#LIBS += /usr/local/lib/libopencv_highgui.so \
+#        /usr/local/lib/libopencv_core.so    \
+#        /usr/local/lib/libopencv_imgproc.so \
+#        /usr/local/lib/libopencv_imgcodecs.so
 }
 
 
 HEADERS += \
     qcvimageprocessor.h
 
+
+android: {
 DISTFILES += \
     android/AndroidManifest.xml \
     android/src/com/amin/classes/MainQtActivity.java
+}
 
 VERSION = 1.1
 
