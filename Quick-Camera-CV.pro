@@ -45,20 +45,22 @@ win32: {
 
 
 ios: {
+    QMAKE_INFO_PLIST += ios/Info.plist
+
     OBJECTIVE_SOURCES += ios/ocview.mm
 
 
-    QMAKE_LFLAGS    += -framework OpenGLES
-    QMAKE_LFLAGS    += -framework GLKit
-    QMAKE_LFLAGS    += -framework QuartzCore
-    QMAKE_LFLAGS    += -framework CoreVideo
-    QMAKE_LFLAGS    += -framework CoreAudio
-    QMAKE_LFLAGS    += -framework CoreImage
-    QMAKE_LFLAGS    += -framework CoreMedia
-    QMAKE_LFLAGS    += -framework AVFoundation
-    QMAKE_LFLAGS    += -framework AudioToolbox
-    QMAKE_LFLAGS    += -framework CoreGraphics
-    QMAKE_LFLAGS    += -framework UIKit
+    #QMAKE_LFLAGS    += -framework OpenGLES
+    #QMAKE_LFLAGS    += -framework GLKit
+    #QMAKE_LFLAGS    += -framework QuartzCore
+    #QMAKE_LFLAGS    += -framework CoreVideo
+    #QMAKE_LFLAGS    += -framework CoreAudio
+    #QMAKE_LFLAGS    += -framework CoreImage
+    #QMAKE_LFLAGS    += -framework CoreMedia
+    #QMAKE_LFLAGS    += -framework AVFoundation
+    #QMAKE_LFLAGS    += -framework AudioToolbox
+    #QMAKE_LFLAGS    += -framework CoreGraphics
+    #QMAKE_LFLAGS    += -framework UIKit
 
 
 
@@ -200,3 +202,6 @@ contains(ANDROID_TARGET_ARCH,armeabi-v7a) {
     ANDROID_EXTRA_LIBS = \
         $$ANDROID_OPENCV/libs/armeabi-v7a/libopencv_java4.so
 }
+
+DISTFILES += \
+    ios/Info.plist
