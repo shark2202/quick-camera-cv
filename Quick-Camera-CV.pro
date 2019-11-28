@@ -9,6 +9,10 @@ android:{
 
 CONFIG += c++11
 
+HEADERS += \
+    qcvimageprocessor.h
+
+
 SOURCES += main.cpp \
     qcvimageprocessor.cpp
 
@@ -166,21 +170,18 @@ LIBS += $$OPENCV_LIB_SRC/libopencv_highgui410.dll.a \
         $$OPENCV_LIB_SRC/libopencv_imgcodecs410.dll.a
 }
 
+
 unix: !android : !macx:{
-##
-#INCLUDEPATH += /usr/local/include \
-#               /usr/local/include/opencv4
+#
+INCLUDEPATH += /usr/local/include \
+               /usr/local/include/opencv4
 
-##
-#LIBS += /usr/local/lib/libopencv_highgui.so \
-#        /usr/local/lib/libopencv_core.so    \
-#        /usr/local/lib/libopencv_imgproc.so \
-#        /usr/local/lib/libopencv_imgcodecs.so
+#
+LIBS += /usr/local/lib/libopencv_highgui.so \
+        /usr/local/lib/libopencv_core.so    \
+        /usr/local/lib/libopencv_imgproc.so \
+        /usr/local/lib/libopencv_imgcodecs.so
 }
-
-
-HEADERS += \
-    qcvimageprocessor.h
 
 ios:{
 HEADERS += \
