@@ -14,6 +14,8 @@ ApplicationWindow {
     height: 600
     title: qsTr("Quick-Camera-CV")
 
+    property var  closeCount : 0
+
     Settings
     {
         property alias cameraCombo: cameraCombo.currentIndex
@@ -390,4 +392,40 @@ ApplicationWindow {
 //            }
         }
     }
+
+    //focus: true
+
+//    Keys.onReleased: {
+//        if(event.key === Qt.Key_Back)
+//        {
+//            event.accepted = true;
+//            if(closeCount > 1)
+//            {
+//                Qt.quit();
+//            }
+//            else
+//            {
+//                //不退出
+//                messageDialog.title = qsTr("exit")
+//                messageDialog.text = " on close exit !!"
+//                messageDialog.open()
+//            }
+//        }
+//    }
+
+//    /*退出的事件*/
+//    onClosing: function(){
+//        if(closeCount > 1){
+//            close.accepted = true;
+
+//        }else{
+//            close.accepted = false;
+//            closeCount ++;
+
+//            //不退出
+//            messageDialog.title = qsTr("exit")
+//            messageDialog.text = " on close exit !!"
+//            messageDialog.open()
+//        }
+//    }
 }

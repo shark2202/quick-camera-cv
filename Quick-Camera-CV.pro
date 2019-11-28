@@ -10,7 +10,6 @@ android:{
 CONFIG += c++11
 
 SOURCES += main.cpp \
-    ios/ocview.mm \
     qcvimageprocessor.cpp
 
 RESOURCES += qml.qrc
@@ -45,6 +44,7 @@ win32: {
 
 
 ios: {
+    message("ios")
     QMAKE_INFO_PLIST += ios/Info.plist
 
     OBJECTIVE_SOURCES += ios/ocview.mm
@@ -180,9 +180,15 @@ unix: !android : !macx:{
 
 
 HEADERS += \
-    ios/ocview.h \
     qcvimageprocessor.h
 
+ios:{
+HEADERS += \
+    ios\ocview.h
+
+SOURCES += \
+    ios\ocview.mm
+}
 
 android: {
 DISTFILES += \
@@ -203,5 +209,8 @@ contains(ANDROID_TARGET_ARCH,armeabi-v7a) {
         $$ANDROID_OPENCV/libs/armeabi-v7a/libopencv_java4.so
 }
 
+ios:{
 DISTFILES += \
     ios/Info.plist
+}
+
