@@ -7,6 +7,9 @@ android:{
     QMAKE_LINK += -nostdlib++
 }
 
+#QMAKE_HOST
+message($$QMAKE_HOST.os)
+
 CONFIG += c++11
 
 HEADERS += \
@@ -100,51 +103,58 @@ linux: android: {
 }
 
 android: {
+    #message(contains(QMAKE_HOST.os,Linux))
 
-ANDROID_OPENCV_LINUX = /home/z/cpp/opencv4/OpenCV-android-sdk/sdk/native
-ANDROID_OPENCV_WINDOWS = F:/opencv4/OpenCV-android-sdk/sdk/native
+    contains(QMAKE_HOST.os,Linux):{
 
-exists($$ANDROID_OPENCV_LINUX){
-    ANDROID_OPENCV = $$ANDROID_OPENCV_LINUX
-    message( "Configuring for ANDROID_OPENCV_LINUX" )
-}
+        ANDROID_OPENCV_LINUX = /home/z/cpp/opencv4/OpenCV-android-sdk/sdk/native
 
-exists($$ANDROID_OPENCV_WINDOWS){
-    ANDROID_OPENCV = $$ANDROID_OPENCV_WINDOWS
-    message( "Configuring for ANDROID_OPENCV_WINDOWS" )
-}
+        exists($$ANDROID_OPENCV_LINUX):{
+            ANDROID_OPENCV = $$ANDROID_OPENCV_LINUX
+            message( "Configuring for ANDROID_OPENCV_LINUX" )
+        }
+    }
+
+    contains(QMAKE_HOST.os,"windows"):{
+        ANDROID_OPENCV_WINDOWS = F:/opencv4/OpenCV-android-sdk/sdk/native
+
+        exists($$ANDROID_OPENCV_WINDOWS):{
+            ANDROID_OPENCV = $$ANDROID_OPENCV_WINDOWS
+            message( "Configuring for ANDROID_OPENCV_WINDOWS" )
+        }
+    }
 
 
-INCLUDEPATH += \
-$$ANDROID_OPENCV/jni/include/opencv2 \
-$$ANDROID_OPENCV/jni/include \
+    INCLUDEPATH += \
+    $$ANDROID_OPENCV/jni/include/opencv2 \
+    $$ANDROID_OPENCV/jni/include \
 
 
-LIBS += \
-$$ANDROID_OPENCV/staticlibs/armeabi-v7a/libopencv_ml.a \
-$$ANDROID_OPENCV/staticlibs/armeabi-v7a/libopencv_objdetect.a \
-$$ANDROID_OPENCV/staticlibs/armeabi-v7a/libopencv_calib3d.a \
-$$ANDROID_OPENCV/staticlibs/armeabi-v7a/libopencv_video.a \
-$$ANDROID_OPENCV/staticlibs/armeabi-v7a/libopencv_features2d.a \
-$$ANDROID_OPENCV/staticlibs/armeabi-v7a/libopencv_highgui.a \
-$$ANDROID_OPENCV/staticlibs/armeabi-v7a/libopencv_flann.a \
-$$ANDROID_OPENCV/staticlibs/armeabi-v7a/libopencv_imgproc.a \
-$$ANDROID_OPENCV/staticlibs/armeabi-v7a/libopencv_dnn.a \
-$$ANDROID_OPENCV/staticlibs/armeabi-v7a/libopencv_imgcodecs.a \
-$$ANDROID_OPENCV/staticlibs/armeabi-v7a/libopencv_core.a \
-$$ANDROID_OPENCV/3rdparty/libs/armeabi-v7a/libcpufeatures.a \
-$$ANDROID_OPENCV/3rdparty/libs/armeabi-v7a/libIlmImf.a \
-$$ANDROID_OPENCV/3rdparty/libs/armeabi-v7a/liblibjasper.a \
-$$ANDROID_OPENCV/3rdparty/libs/armeabi-v7a/liblibjpeg-turbo.a \
-$$ANDROID_OPENCV/3rdparty/libs/armeabi-v7a/liblibpng.a \
-$$ANDROID_OPENCV/3rdparty/libs/armeabi-v7a/liblibprotobuf.a \
-$$ANDROID_OPENCV/3rdparty/libs/armeabi-v7a/liblibtiff.a \
-$$ANDROID_OPENCV/3rdparty/libs/armeabi-v7a/liblibwebp.a \
-$$ANDROID_OPENCV/3rdparty/libs/armeabi-v7a/libquirc.a \
-$$ANDROID_OPENCV/3rdparty/libs/armeabi-v7a/libtbb.a \
-$$ANDROID_OPENCV/3rdparty/libs/armeabi-v7a/libtegra_hal.a \
-$$ANDROID_OPENCV/3rdparty/libs/armeabi-v7a/libittnotify.a \
-$$ANDROID_OPENCV/libs/armeabi-v7a/libopencv_java4.so
+    LIBS += \
+    $$ANDROID_OPENCV/staticlibs/armeabi-v7a/libopencv_ml.a \
+    $$ANDROID_OPENCV/staticlibs/armeabi-v7a/libopencv_objdetect.a \
+    $$ANDROID_OPENCV/staticlibs/armeabi-v7a/libopencv_calib3d.a \
+    $$ANDROID_OPENCV/staticlibs/armeabi-v7a/libopencv_video.a \
+    $$ANDROID_OPENCV/staticlibs/armeabi-v7a/libopencv_features2d.a \
+    $$ANDROID_OPENCV/staticlibs/armeabi-v7a/libopencv_highgui.a \
+    $$ANDROID_OPENCV/staticlibs/armeabi-v7a/libopencv_flann.a \
+    $$ANDROID_OPENCV/staticlibs/armeabi-v7a/libopencv_imgproc.a \
+    $$ANDROID_OPENCV/staticlibs/armeabi-v7a/libopencv_dnn.a \
+    $$ANDROID_OPENCV/staticlibs/armeabi-v7a/libopencv_imgcodecs.a \
+    $$ANDROID_OPENCV/staticlibs/armeabi-v7a/libopencv_core.a \
+    $$ANDROID_OPENCV/3rdparty/libs/armeabi-v7a/libcpufeatures.a \
+    $$ANDROID_OPENCV/3rdparty/libs/armeabi-v7a/libIlmImf.a \
+    $$ANDROID_OPENCV/3rdparty/libs/armeabi-v7a/liblibjasper.a \
+    $$ANDROID_OPENCV/3rdparty/libs/armeabi-v7a/liblibjpeg-turbo.a \
+    $$ANDROID_OPENCV/3rdparty/libs/armeabi-v7a/liblibpng.a \
+    $$ANDROID_OPENCV/3rdparty/libs/armeabi-v7a/liblibprotobuf.a \
+    $$ANDROID_OPENCV/3rdparty/libs/armeabi-v7a/liblibtiff.a \
+    $$ANDROID_OPENCV/3rdparty/libs/armeabi-v7a/liblibwebp.a \
+    $$ANDROID_OPENCV/3rdparty/libs/armeabi-v7a/libquirc.a \
+    $$ANDROID_OPENCV/3rdparty/libs/armeabi-v7a/libtbb.a \
+    $$ANDROID_OPENCV/3rdparty/libs/armeabi-v7a/libtegra_hal.a \
+    $$ANDROID_OPENCV/3rdparty/libs/armeabi-v7a/libittnotify.a \
+    $$ANDROID_OPENCV/libs/armeabi-v7a/libopencv_java4.so
 
 }
 
@@ -159,42 +169,43 @@ win32:{
     OPENCV_HEADER_SRC=C:/opencv/build/install
     OPENCV_LIB_SRC=C:/opencv/build/install/x64/mingw/lib
 
-##
-INCLUDEPATH += $$OPENCV_HEADER_SRC/include \
-               $$OPENCV_HEADER_SRC/include/opencv2
+    ##
+    INCLUDEPATH += $$OPENCV_HEADER_SRC/include \
+                   $$OPENCV_HEADER_SRC/include/opencv2
 
-##
-LIBS += $$OPENCV_LIB_SRC/libopencv_highgui410.dll.a \
-        $$OPENCV_LIB_SRC/libopencv_core410.dll.a    \
-        $$OPENCV_LIB_SRC/libopencv_imgproc410.dll.a \
-        $$OPENCV_LIB_SRC/libopencv_imgcodecs410.dll.a
+    ##
+    LIBS += $$OPENCV_LIB_SRC/libopencv_highgui410.dll.a \
+            $$OPENCV_LIB_SRC/libopencv_core410.dll.a    \
+            $$OPENCV_LIB_SRC/libopencv_imgproc410.dll.a \
+            $$OPENCV_LIB_SRC/libopencv_imgcodecs410.dll.a
+
 }
 
 
 unix: !android : !macx:{
-#
-INCLUDEPATH += /usr/local/include \
-               /usr/local/include/opencv4
+    #
+    INCLUDEPATH += /usr/local/include \
+                   /usr/local/include/opencv4
 
-#
-LIBS += /usr/local/lib/libopencv_highgui.so \
-        /usr/local/lib/libopencv_core.so    \
-        /usr/local/lib/libopencv_imgproc.so \
-        /usr/local/lib/libopencv_imgcodecs.so
+    #
+    LIBS += /usr/local/lib/libopencv_highgui.so \
+            /usr/local/lib/libopencv_core.so    \
+            /usr/local/lib/libopencv_imgproc.so \
+            /usr/local/lib/libopencv_imgcodecs.so
 }
 
 ios:{
-HEADERS += \
-    ios\ocview.h
+    HEADERS += \
+        ios\ocview.h
 
-SOURCES += \
-    ios\ocview.mm
+    SOURCES += \
+        ios\ocview.mm
 }
 
 android: {
-DISTFILES += \
-    android/AndroidManifest.xml \
-    android/src/com/amin/classes/MainQtActivity.java
+    DISTFILES += \
+        android/AndroidManifest.xml \
+        android/src/com/amin/classes/MainQtActivity.java
 }
 
 VERSION = 1.1
@@ -211,7 +222,7 @@ contains(ANDROID_TARGET_ARCH,armeabi-v7a) {
 }
 
 ios:{
-DISTFILES += \
-    ios/Info.plist
+    DISTFILES += \
+        ios/Info.plist
 }
 
