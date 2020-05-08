@@ -54,6 +54,8 @@ ios: {
     message("ios")
     QMAKE_INFO_PLIST += ios/Info.plist
 
+    ####
+    OBJECTIVE_HEADERS += ios/ocview.h
     OBJECTIVE_SOURCES += ios/ocview.mm
 
 
@@ -182,7 +184,7 @@ win32:{
 }
 
 
-unix: !android : !macx:{
+unix: !android : !macx: !iphoneos {
     #
     INCLUDEPATH += /usr/local/include \
                    /usr/local/include/opencv4
@@ -196,10 +198,10 @@ unix: !android : !macx:{
 
 ios:{
     HEADERS += \
-        ios\ocview.h
+        ios/ocview.h
 
     SOURCES += \
-        ios\ocview.mm
+        ios/ocview.mm
 }
 
 android: {
