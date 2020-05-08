@@ -5,6 +5,8 @@ QT += multimedia
 android:{
     QT += androidextras
     QMAKE_LINK += -nostdlib++
+
+    ANDROID_NDK_PLATFORM = android-21
 }
 
 #QMAKE_HOST
@@ -227,4 +229,8 @@ ios:{
     DISTFILES += \
         ios/Info.plist
 }
+
+DISTFILES += \
+    android/res/layout/activity_main.xml \
+    android/src/com/amin/classes/FirstActivity.java
 

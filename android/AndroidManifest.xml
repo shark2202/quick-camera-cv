@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
-<manifest package="com.amahta.QuickCameraCV" xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.1" android:versionCode="11" android:installLocation="auto">
+<manifest package="com.amin.QuickCameraCV" xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.1" android:versionCode="11" android:installLocation="auto">
     <application android:hardwareAccelerated="true" android:name="org.qtproject.qt5.android.bindings.QtApplication" android:label="Quick-Camera-CV" android:icon="@drawable/icon">
         <activity android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|layoutDirection|locale|fontScale|keyboard|keyboardHidden|navigation" android:name="com.amin.classes.MainQtActivity" android:label="Quick-Camera-CV" android:screenOrientation="unspecified" android:launchMode="singleTop">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+            <!-- <intent-filter>-->
+            <!--    <action android:name="android.intent.action.MAIN"/>-->
+            <!--    <category android:name="android.intent.category.LAUNCHER"/>-->
+            <!--</intent-filter>  -->
 
             <!-- Application arguments -->
             <!-- meta-data android:name="android.app.arguments" android:value="arg1 arg2 arg3"/ -->
@@ -59,6 +59,16 @@
             <!-- extract android style -->
     </activity>
 
+       <activity
+          android:name="com.amin.classes.FirstActivity"
+          android:label="FirstActivity" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+
+       </activity>
     <!-- For adding service(s) please check: https://wiki.qt.io/AndroidServices -->
 
     </application>
@@ -68,7 +78,7 @@
 
     <!-- The following comment will be replaced upon deployment with default permissions based on the dependencies of the application.
          Remove the comment if you do not require these default permissions. -->
-        <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.CAMERA"/>
@@ -77,11 +87,11 @@
 
     <!-- The following comment will be replaced upon deployment with default features based on the dependencies of the application.
          Remove the comment if you do not require these default features. -->
-        <uses-feature android:name="android.hardware.camera" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera" android:required="false"/>
     <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
     <uses-feature android:name="android.hardware.microphone" android:required="false"/>
     <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
 
-<!-- %%INSERT_PERMISSIONS -->
+    <!-- %%INSERT_PERMISSIONS -->
     <!-- %%INSERT_FEATURES -->
 </manifest>
